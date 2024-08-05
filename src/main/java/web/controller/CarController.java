@@ -20,13 +20,8 @@ public class CarController {
 
 
     @GetMapping("/cars")
-    public String showCarsList(@RequestParam(defaultValue = "5")  int count, Model model) {
-        if (count >= 5) {
-            model.addAttribute("cars", carService.showCars(5));
-        } else {
-            model.addAttribute("cars", carService.showCars(count));
-        }
-
+    public String showCarsList(@RequestParam(value = "count", defaultValue = "5")  int count, Model model) {
+        model.addAttribute("cars", carService.showCars(count));
         return "cars";
     }
 }
